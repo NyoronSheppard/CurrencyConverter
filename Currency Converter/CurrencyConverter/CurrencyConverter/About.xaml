@@ -1,0 +1,58 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CurrencyConverter.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--All content, Main Layout-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel Page name-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="About" Margin="87,-7,10,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="42" HorizontalAlignment="Center" Width="371" FontFamily="Segoe WP" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!--ContentPanel. Aditional Content-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,38,12,0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="148*"/>
+                    <RowDefinition Height="205*"/>
+                    <RowDefinition Height="248*"/>
+                    <RowDefinition Height="35*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Application created by NyoronDev, for any problem or suggestions, please send an email to nyoronsheppard@outlook.es" Margin="1,0,1,21" HorizontalAlignment="Center" Width="454"/>
+
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Online Currency API:"/>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="- USD, EUR, GBP, CAD, BGN, CHF, CZK, DKK " Margin="10,33,0,0"/>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="- BRL, CPY, HKD, JPY, HUF, IDR, INR, KRW, LTL " Margin="10,62,0,0"/>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="- MXN, NZD, NOK, RUB, SEK, PLN, RON, HRK  " Margin="10,92,0,0"/>
+                
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Offline Mode " Margin="1,141,0,0"/>
+
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Special Thanks" Margin="0,5,0,0"/>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Farebookings Web Api" Margin="10,40,0,0"/>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="You  : )" Margin="10,74,0,0"/>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Update your Currency pressing the Flag " Margin="10,144,0,0"/>
+
+            </Grid>
+            <Image x:Name="iconApp" HorizontalAlignment="Left" Height="53" Margin="0,-117,0,0" VerticalAlignment="Top" Width="66" Source="/Assets/dollar.png" Tap="onClickImage"/>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

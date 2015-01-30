@@ -1,0 +1,106 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CurrencyConverter.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="About" Click="onClickAbout"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- NOTA PARA LA TRADUCCIÓN:
+            Para traducir las cadenas mostradas, copia sus valores a las claves con el nombre
+            correspondiente en el archivo de recursos del idioma neutro (AppResources.resx) de la aplicación y
+            reemplaza el valor de texto codificado de forma rígida entre las comillas de los atributos
+            con la cláusula de enlace cuya ruta de acceso apunte a ese nombre de cadena.
+
+            Por ejemplo:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            Este enlace apunta al recurso de cadena de la plantilla denominado "ApplicationTitle".
+
+            Al agregar idiomas admitidos en la pestaña Propiedades del proyecto se creará un
+            nuevo archivo resx por idioma que puede contener los valores traducidos de las
+            cadenas de la interfaz de usuario. El enlace de estos ejemplos hará que el valor de los atributos
+            se tome del archivo .resx correspondiente al valor de
+            CurrentUICulture de la aplicación en tiempo de ejecución.
+         -->
+
+
+
+        <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Currency Calculator" Margin="64,-7,10,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="42" HorizontalAlignment="Center" Width="394" FontFamily="Segoe WP" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!--ContentPanel. Colocar aquí el contenido adicional-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid HorizontalAlignment="Left" Height="656" VerticalAlignment="Top" Width="456">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="149*"/>
+                    <RowDefinition Height="149*"/>
+                    <RowDefinition Height="149*"/>
+                    <RowDefinition Height="206*"/>
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="TextBoxCurrency1" Grid.Row="0" TextAlignment="Right" InputScope="Number" HorizontalAlignment="Left" Height="73" Margin="111,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219" Tap="TextBoxUSD_Tap"/>
+                <TextBlock x:Name="LabelCurrency1" Grid.Row="0" HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.851,0.423" Height="61" Width="101" FontSize="40"/>
+                <Image x:Name="flagCurrency1" Grid.Row="0" HorizontalAlignment="Left" Height="53" Margin="351,30,0,0" VerticalAlignment="Top" Width="66"  Tap="UpdateUSD_Click"/>
+                <Image x:Name="Arrow1" HorizontalAlignment="Left" Height="72" Margin="351,68,0,0" VerticalAlignment="Top" Width="79" Tap="Image_Tap"/>
+                <TextBlock x:Name="textBlockCurrencyName1" Grid.Row="0" HorizontalAlignment="Left" Margin="47,86,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="304" Height="45" FontSize="25"/>
+
+                <TextBox x:Name="TextBoxCurrency2" Grid.Row="1" TextAlignment="Right" InputScope="Number" HorizontalAlignment="Left" Height="73" Margin="111,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219" Tap="TextBoxEUR_Tap"/>
+                <TextBlock x:Name="LabelCurrency2" Grid.Row="1" HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.851,0.423" Height="61" Width="101" FontSize="40"/>
+                <Image x:Name="flagCurrency2" Grid.Row="1" HorizontalAlignment="Left" Height="53" Margin="351,31,0,0" VerticalAlignment="Top" Width="66" Tap="UpdateEUR_Click"/>
+                <Image x:Name="Arrow2" HorizontalAlignment="Left" Height="72" Margin="351,72,0,0" VerticalAlignment="Top" Width="79" Grid.Row="1" Tap="Image_Tap_1"/>
+                <TextBlock x:Name="textBlockCurrencyName2" Grid.Row="1" HorizontalAlignment="Left" Margin="47,86,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="304" Height="45" FontSize="25"/>
+
+                <TextBox x:Name="TextBoxCurrency3" Grid.Row="2" TextAlignment="Right" InputScope="Number" HorizontalAlignment="Left" Height="73" Margin="111,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219" Tap="TextBoxGBP_Tap"/>
+                <TextBlock x:Name="LabelCurrency3" Grid.Row="2" HorizontalAlignment="Left" Margin="10,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.851,0.423" Height="61" Width="101" FontSize="40"/>
+                <Image x:Name="flagCurrency3" Grid.Row="2" HorizontalAlignment="Left" Height="53" Margin="351,29,0,0" VerticalAlignment="Top" Width="66" Tap="UpdateGBP_Click"/>
+                <Image x:Name="Arrow3"  HorizontalAlignment="Left" Height="72" Margin="351,64,0,0" VerticalAlignment="Top" Width="79" Grid.Row="2" Tap="Image_Tap_2"/>
+                <TextBlock x:Name="textBlockCurrencyName3" Grid.Row="2" HorizontalAlignment="Left" Margin="47,91,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="304" Height="45" FontSize="25"/>
+
+                <TextBox x:Name="TextBoxCurrency4" Grid.Row="3" TextAlignment="Right" InputScope="Number" HorizontalAlignment="Left" Height="73" Margin="111,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219" Tap="TextBoxCurrency4_Tap"/>
+                <TextBlock x:Name="textBlockCurrencyName4" Grid.Row="3" HorizontalAlignment="Left" Margin="47,91,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="304" Height="45" FontSize="25"/>
+                <TextBlock x:Name="LabelCurrency4" Grid.Row="3" HorizontalAlignment="Left" Margin="10,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.851,0.423" Height="61" Width="101" FontSize="40"/>
+                <Image x:Name="flagCurrency4" Grid.Row="3" HorizontalAlignment="Left" Height="53" Margin="351,29,0,0" VerticalAlignment="Top" Width="66" Tap="flagCurrency4_Tap"/>
+                <Image x:Name="Arrow4"  HorizontalAlignment="Left" Height="72" Margin="351,64,0,0" VerticalAlignment="Top" Width="79" Grid.Row="3" Tap="Arrow4_Tap"/>
+            </Grid>
+        </Grid>
+
+
+        <Image x:Name="iconApp" HorizontalAlignment="Left" Height="53" Margin="12,17,0,0" VerticalAlignment="Top" Width="66" Source="/Assets/dollar.png"/>
+
+
+        <!--Quitar la marca de comentarios para ver una cuadrícula de alineación que
+            ayuda a comprobar que los controles están alineados en los límites normales.  La imagen tiene un margen superior de -32px para
+            tener en cuenta la bandeja del sistema. Establécelo en 0 (o quite el margen)
+            si la bandeja del sistema está oculta.
+
+            Antes de enviarla, quita este código XAML y la propia imagen.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
